@@ -1,0 +1,48 @@
+// show all databases
+show dbs
+
+
+// open or direct to a database
+use DATABASENAME
+
+
+// add new documents
+db.COLLECTIONNAME.insertOne({key: "value", key: ["value", "value"]})            //insert one document
+db.COLLECTIONNAME.insertMany([{key: "value"}, {key, "value"}])                  //insert many document
+db.COLLECTIONNAME.insertOne({key: "value", key: {key: "value", key: "value"}})  //nested document
+
+
+// find documents
+db.COLLECTIONNAME.find()
+db.COLLECTIONNAME.find({key: "value"})  //find document with specific fields
+db.COLLECTIONNAME.find({}, {key: 1})  //return document with specific fields
+
+
+//sorting and limiting data
+db.COLLECTIONNAME.find().count()  //return result number
+db.COLLECTIONNAME.find().limit(3)  //limit number of result to 3
+db.COLLECTIONNAME.find().sort(key: 1)  //sort results according to specific in ascending order, -1 : descending order
+
+
+//operators
+db.COLLECTIONNAME.find({key: {$gt: 1}})  // field greater than 1
+gte : greater than or equal
+lt : less than
+lte : less than or equal
+
+db.COLLECTIONNAME.find({$or: [{key: "value"}, {key: "value"}]})  //OR 
+
+db.COLLECTIONNAME.find({key: {$in: ["value", "value", "value"]}})  //return data if field is in the specified value
+$nin: not in
+$all: data got all specified value
+
+
+//update documents
+db.COLLECTIONNAME.updateOne({_id: ObjectId()}, {$set: {key: "value"}})
+.updateMany() //update many data
+{$inc: {key: 2}} //increase value by 2, -2: minus  2
+
+
+//delete documents
+db.COLLECTIONNAME.deleteOne({_id: ObjectId()})
+
